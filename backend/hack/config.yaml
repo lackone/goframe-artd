@@ -1,0 +1,25 @@
+
+# CLI tool, only in development environment.
+# https://goframe.org/docs/cli
+gfcli:
+  gen:
+    dao:
+      - link: "mysql:root:root@tcp(127.0.0.1:3306)/artd"
+        descriptionTag: true
+        removePrefix: "tb_"
+        jsonCase: "Snake"
+  build:
+    name:      "artd"
+    arch:      "amd64"
+    system:    "linux,windows"
+    mod:       "none"
+    cgo:       0
+    packSrc:   "manifest/config,manifest/i18n,resource/public,resource/template"
+    version:   ""
+    path:      "./bin"
+    extra:     ""
+
+  docker:
+    build: "-a amd64 -s linux -p temp -ew"
+    tagPrefixes:
+      - my.image.pub/my-app
